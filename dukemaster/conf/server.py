@@ -122,8 +122,8 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     # 'django.contrib.messages',
     'dukemaster',
-   #'dukemaster.servers',
-   #'dukemaster.projects',
+    'dukemaster.servers',
+    'dukemaster.projects',
    #'dukemaster.webui',
 #   'raven.contrib.django', # project level integration 
    #'sentry.plugins.sentry_servers',
