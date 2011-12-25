@@ -12,6 +12,7 @@ class ProjectSourceInline(admin.TabularInline):
     model = ProjectSource
     extra = 0
 
+
 class ProjectStageInline(admin.TabularInline):
     model = ProjectStage
     extra = 0

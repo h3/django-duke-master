@@ -124,7 +124,7 @@ INSTALLED_APPS = (
     'dukemaster',
     'dukemaster.servers',
     'dukemaster.projects',
-   #'dukemaster.webui',
+    'dukemaster.webui',
 #   'raven.contrib.django', # project level integration 
    #'sentry.plugins.sentry_servers',
    #'sentry.plugins.sentry_sites',
