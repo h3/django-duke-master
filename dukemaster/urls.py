@@ -7,6 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     (r'^admin/',     include(admin.site.urls)),
     (r'^grappelli/', include('grappelli.urls')),
+    (r'^api/',       include('dukemaster.webui.urls')),
    #(r'^i18n/',      include('django.conf.urls.i18n')),
     (r'^%s(.*)$' % settings.STATIC_URL[1:], 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
 )
