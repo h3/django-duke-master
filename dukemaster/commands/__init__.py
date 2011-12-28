@@ -1,10 +1,15 @@
 from abc import abstractmethod
 
+from dukemaster.utils import simplejson
+from dukemaster.utils.json import BetterJSONEncoder
+
 class BaseCommand(object):
+    output_format = 'raw'
+    out = ''
 
     def __init__(self, data):
         """
-        {'flags': {}, 'args': [], 'command': 'list', 'data': {'message_id': 'd1c8d2e5e93444e6b530145b982b7ea3', '__dukeclient__': {'version': '0.0.1-alpha'}}}
+        {'flags': {}, 'args': [], 'command': 'list', 'data': {'message_id': '', '__dukeclient__': {'version': ''}}}
         """
         self.args = data['args']
         self.kwargs = data['flags']
@@ -14,6 +19,12 @@ class BaseCommand(object):
     @abstractmethod
     def call(self):
         pass
+
+    def output(self):
+        if self.output_format == 'json':
+            return simplejson.dumps(self.out, cls=BetterJSONEncoder)
+        else:
+            return self.out
     
 
 def call_command(data):
@@ -21,4 +32,5 @@ def call_command(data):
     class_name = '%sCommand' % (cmd[0].capitalize() + cmd[1:])
     module  = __import__('dukemaster.commands.%s' % cmd, {}, {}, class_name)
     command = getattr(module, class_name)(data)
-    return command.call()
+    command.call()
+    return command.output()

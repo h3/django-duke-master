@@ -8,11 +8,6 @@ from django.utils.translation import ugettext_lazy as _
 from dukemaster.projects.models import *
 
 
-class ProjectSourceInline(admin.TabularInline):
-    model = ProjectSource
-    extra = 0
-
-
 class ProjectStageInline(admin.TabularInline):
     model = ProjectStage
     extra = 0
@@ -21,7 +16,7 @@ class ProjectStageInline(admin.TabularInline):
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('name',)
 #   readonly_fields =  ('date',)
-    inlines = [ProjectSourceInline, ProjectStageInline]
+    inlines = [ProjectStageInline]
 #   date_hierarchy = 'date'
 #   search_fields = ['draftwinner__user__username']
 #   list_filter = ['email_sent']
