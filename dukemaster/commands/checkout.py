@@ -13,7 +13,6 @@ class CheckoutCommand(BaseCommand):
         project_name = self.args[0]
         try:
             project = Project.objects.get(name=project_name)
-            print project.url
             self.out = {'protocol': project.protocol, 'url': project.url}
             return True
         except:

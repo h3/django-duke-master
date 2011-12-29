@@ -22,9 +22,9 @@ class ListCommand(BaseCommand):
 
     def call(self):
         if self.args[0] == 'projects':
-            return self._list_projects()
+            self.out = self._list_projects()
         elif self.args[0] == 'servers':
-            return self._list_servers()
+            self.out = self._list_servers()
         else:
-            return "Error: unknown argument: %s" % self.args[0]
+            self.out = "Error: unknown argument: %s" % self.args[0]
 
